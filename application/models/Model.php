@@ -76,6 +76,11 @@ class Model extends CI_Model
     $result = $qry->result();
     return $result;
   }
+  public function getpriceData(){
+    $qry = $this->db->get("price_category");
+    $result = $qry->result();
+    return $result;
+  }
   public function getPriceTableData(){
     $this->db->select("*");
     $this->db->from("price_feature_category");

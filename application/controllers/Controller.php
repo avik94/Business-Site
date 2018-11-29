@@ -22,6 +22,7 @@ class Controller extends CI_Controller {
 		$data["acrodionText"] =$this->Model->acrodionText();
 		$data["getTeamData"] = $this->Model->getTeamData();
 		$data["getTestimonialData"] = $this->Model->getTestimonialData();
+		$data["getpriceData"] = $this->Model->getpriceData();
 		$data["getPriceTableData"] = $this->Model->getPriceTableData();
 		// echo "<pre>";
 		// print_r($data["getPriceTableData"]);die();

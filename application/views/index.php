@@ -466,9 +466,10 @@
                     <div class="pricing-tables full-width">
 
                         <div class="row">
-                          <?php foreach($getPriceTableData as $data): ?>
+                          <?php foreach($getpriceData as $data): ?>
+                            <?php if($data->prive_id ==2): ?>
                             <div class="col-lg-4">
-                                <div class="item text-center mb-md50">
+                                <div class="item text-center active mb-md50" data-background="<?php echo base_url("assets");?>/img/03.jpg">
                                     <div class="type">
                                         <h4><?php echo $data->price_name; ?></h4>
                                     </div>
@@ -477,22 +478,20 @@
                                         <h3><?php echo $data->ammount; ?><span>$</span></h3>
                                         <span class="per">Per Of Month</span>
                                     </div>
-                                    <?php while($data->prive_id == $data->price_cat){
+                                    <?php foreach($getPriceTableData as $datas):?>
+                                    <?php while($data->prive_id == $datas->price_cat){
                                       ?>
                                       <div class="features">
                                         <ul>
-                                            <li><?php echo $data->feature_name ?><i class="true fas fa-check"></i></li>
-                                            <li>15 Domain Names<i class="true fas fa-check"></i></li>
-                                            <li>4 Email Address<i class="true fas fa-check"></i></li>
-                                            <li>Enhanced Security<i class="false fas fa-times"></i></li>
-                                            <li>Unlimited Support<i class="false fas fa-times"></i></li>
+                                            <li><?php echo $datas->feature_name; ?><i class="true fas fa-check"></i></li>
+
                                         </ul>
                                     </div>
 
                                       <?php
                                       break;
                                     } ?>
-
+                                  <?php endforeach; ?>
                                     <div class="order">
                                         <a href="#0" class="butn butn-bg">
                                             <span>Purchase Now</span>
@@ -500,37 +499,42 @@
                                     </div>
                                 </div>
                             </div>
-                          <?php break; endforeach; ?>
-
+                          <?php else: ?>
                             <div class="col-lg-4">
-                                <div class="item text-center active bg-img mb-md50" data-background="<?php echo base_url("assets");?>/img/03.jpg">
-
+                                <div class="item text-center  mb-md50">
                                     <div class="type">
-                                        <h4>Standard</h4>
+                                        <h4><?php echo $data->price_name; ?></h4>
                                     </div>
 
                                     <div class="value">
-                                        <h3>30<span>$</span></h3>
+                                        <h3><?php echo $data->ammount; ?><span>$</span></h3>
                                         <span class="per">Per Of Month</span>
                                     </div>
-
-                                    <div class="features">
+                                    <?php foreach($getPriceTableData as $datas):?>
+                                    <?php while($data->prive_id == $datas->price_cat){
+                                      ?>
+                                      <div class="features">
                                         <ul>
-                                            <li>100 GB Disk Space<i class="true fas fa-check"></i></li>
-                                            <li>30 Domain Names<i class="true fas fa-check"></i></li>
-                                            <li>5 Email Address<i class="true fas fa-check"></i></li>
-                                            <li>Enhanced Security<i class="false fas fa-times"></i></li>
-                                            <li>Unlimited Support<i class="true fas fa-check"></i></li>
+                                            <li><?php echo $datas->feature_name; ?><i class="true fas fa-check"></i></li>
+
                                         </ul>
                                     </div>
 
+                                      <?php
+                                      break;
+                                    } ?>
+                                  <?php endforeach; ?>
                                     <div class="order">
-                                        <a href="#0" class="butn butn-light">
+                                        <a href="#0" class="butn butn-bg">
                                             <span>Purchase Now</span>
                                         </a>
                                     </div>
                                 </div>
                             </div>
+                          <?php endif; ?>
+                          <?php endforeach; ?>
+
+
 
                         </div>
 
