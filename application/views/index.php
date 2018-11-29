@@ -6,9 +6,9 @@
 <head>
 
     	<!-- Metas -->
-        <meta charset="utf-8">
+    <meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		<meta name="keywords" content="HTML5 Template Arco onepage themeforest" />
 		<meta name="description" content="Arco - Onepage Multi-Purpose HTML5 Template" />
 		<meta name="author" content="" />
@@ -417,15 +417,16 @@
                         <h6>The Talent Crew</h6>
                     </div>
 
+                    <?php foreach($getTeamData as $data): ?>
                     <div class="col-lg-6">
                         <div class="item mb-50">
                             <div class="team-img">
-                                <img src="<?php echo base_url("assets");?>/img/team/1.jpg" alt="">
+                                <img src="<?php echo base_url("assets");?>/img/team/<?php echo $data->image;?>" alt="">
                             </div>
                             <div class="info">
-                                <h6>Alex Smith</h6>
-                                <span>Project Manager</span>
-                                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry.</p>
+                                <h6><?php echo $data->name;?></h6>
+                                <span><?php echo $data->role;?></span>
+                                <p><?php echo $data->text;?></p>
                                 <div class="social">
                                     <a href="#0" class="icon">
                                         <i class="fab fa-facebook-f"></i>
@@ -440,78 +441,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-6">
-                        <div class="item mb-50">
-                            <div class="team-img">
-                                <img src="<?php echo base_url("assets");?>/img/team/2.jpg" alt="">
-                            </div>
-                            <div class="info">
-                                <h6>Alex Smith</h6>
-                                <span>Project Manager</span>
-                                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry.</p>
-                                <div class="social">
-                                    <a href="#0" class="icon">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#0" class="icon">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#0" class="icon">
-                                        <i class="fab fa-behance"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="item mb-md50">
-                            <div class="team-img">
-                                <img src="<?php echo base_url("assets");?>/img/team/3.jpg" alt="">
-                            </div>
-                            <div class="info">
-                                <h6>Alex Smith</h6>
-                                <span>Project Manager</span>
-                                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry.</p>
-                                <div class="social">
-                                    <a href="#0" class="icon">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#0" class="icon">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#0" class="icon">
-                                        <i class="fab fa-behance"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="item">
-                            <div class="team-img">
-                                <img src="<?php echo base_url("assets");?>/img/team/4.jpg" alt="">
-                            </div>
-                            <div class="info">
-                                <h6>Alex Smith</h6>
-                                <span>Project Manager</span>
-                                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry.</p>
-                                <div class="social">
-                                    <a href="#0" class="icon">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#0" class="icon">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#0" class="icon">
-                                        <i class="fab fa-behance"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  <?php endforeach; ?>
 
                 </div>
             </div>
@@ -536,27 +466,32 @@
                     <div class="pricing-tables full-width">
 
                         <div class="row">
-
+                          <?php foreach($getPriceTableData as $data): ?>
                             <div class="col-lg-4">
                                 <div class="item text-center mb-md50">
                                     <div class="type">
-                                        <h4>Basic</h4>
+                                        <h4><?php echo $data->price_name; ?></h4>
                                     </div>
 
                                     <div class="value">
-                                        <h3>10<span>$</span></h3>
+                                        <h3><?php echo $data->ammount; ?><span>$</span></h3>
                                         <span class="per">Per Of Month</span>
                                     </div>
-
-                                    <div class="features">
+                                    <?php while($data->prive_id == $data->price_cat){
+                                      ?>
+                                      <div class="features">
                                         <ul>
-                                            <li>10 GB Disk Space<i class="true fas fa-check"></i></li>
+                                            <li><?php echo $data->feature_name ?><i class="true fas fa-check"></i></li>
                                             <li>15 Domain Names<i class="true fas fa-check"></i></li>
                                             <li>4 Email Address<i class="true fas fa-check"></i></li>
                                             <li>Enhanced Security<i class="false fas fa-times"></i></li>
                                             <li>Unlimited Support<i class="false fas fa-times"></i></li>
                                         </ul>
                                     </div>
+
+                                      <?php
+                                      break;
+                                    } ?>
 
                                     <div class="order">
                                         <a href="#0" class="butn butn-bg">
@@ -565,6 +500,7 @@
                                     </div>
                                 </div>
                             </div>
+                          <?php break; endforeach; ?>
 
                             <div class="col-lg-4">
                                 <div class="item text-center active bg-img mb-md50" data-background="<?php echo base_url("assets");?>/img/03.jpg">
@@ -596,35 +532,6 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4">
-                                <div class="item text-center">
-                                    <div class="type">
-                                        <h4>Premium</h4>
-                                    </div>
-
-                                    <div class="value">
-                                        <h3>80<span>$</span></h3>
-                                        <span class="per">Per Of Month</span>
-                                    </div>
-
-                                    <div class="features">
-                                        <ul>
-                                            <li>500 GB Disk Space<i class="true fas fa-check"></i></li>
-                                            <li>100 Domain Names<i class="true fas fa-check"></i></li>
-                                            <li>10 Email Address<i class="true fas fa-check"></i></li>
-                                            <li>Enhanced Security<i class="true fas fa-check"></i></li>
-                                            <li>Unlimited Support<i class="true fas fa-check"></i></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="order">
-                                        <a href="#0" class="butn butn-bg">
-                                            <span>Purchase Now</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
 
                     </div>
@@ -647,33 +554,17 @@
                     <div class="offset-lg-1 col-lg-10">
 
                         <div class="owl-carousel owl-theme text-center">
+                          <?php foreach ($getTestimonialData as $data):?>
                             <div class="item">
                                 <div class="client-img">
-                                    <img src="<?php echo base_url("assets");?>/img/clients/1.jpg" alt="">
+                                    <img src="<?php echo base_url("assets");?>/img/clients/<?php echo $data->image; ?>" alt="">
                                 </div>
                                 <div class="info">
-                                    <h6>Sam Martin <span>Envato Customer</span></h6>
+                                    <h6><?php echo $data->name; ?> <span><?php echo $data->role; ?></span></h6>
                                 </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                                <p><?php echo $data->text; ?></p>
                             </div>
-                            <div class="item">
-                                <div class="client-img">
-                                    <img src="<?php echo base_url("assets");?>/img/clients/2.jpg" alt="">
-                                </div>
-                                <div class="info">
-                                    <h6>Sam Martin <span>Envato Customer</span></h6>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                            </div>
-                            <div class="item">
-                                <div class="client-img">
-                                    <img src="<?php echo base_url("assets");?>/img/clients/3.jpg" alt="">
-                                </div>
-                                <div class="info">
-                                    <h6>Sam Martin <span>Envato Customer</span></h6>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and type setting industry when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                            </div>
+                          <?php endforeach; ?>
                         </div>
                     </div>
 
@@ -771,9 +662,9 @@
 
                     <div class="offset-lg-3 col-lg-6 offset-md-2 col-md-8 text-center">
                         <h4>Join To Our Newsletter</h4>
-                        <form>
+                        <form action="<?php base_url(); ?>Controller/newsLetter" method="post">
                             <input type="email" name="email" placeholder="Your E-mail">
-                            <button type="submit" class="butn butn-bg"><span>Subscribe</span></button>
+                            <input type="submit" name="submit" value="Subscribe" class="butn butn-bg">
                         </form>
                     </div>
 
@@ -908,7 +799,7 @@
                     </div>
 
                     <div class="offset-lg-2 col-lg-8 offset-md-1 col-md-10">
-                        <form class="form" id="contact-form" method="post" action="http://www.innovationplans.com/idesign/arco/contact.php">
+                        <form class="form" id="contact-form" method="post" action="<?php echo base_url("Controller/getFromData"); ?>">
 
                             <div class="messages"></div>
 
@@ -938,9 +829,8 @@
                                     </div>
 
                                     <div class="col-md-12 text-center">
-                                        <button type="submit"><span>Send Message</span></button>
+                                        <input type="submit" name="submit" value="send">
                                     </div>
-
                                 </div>
                             </div>
                         </form>

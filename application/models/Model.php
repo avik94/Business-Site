@@ -66,8 +66,24 @@ class Model extends CI_Model
     $result =$qry->result();
     return $result;
   }
-
-
+  public function getTeamData(){
+    $qry = $this->db->get("our_team");
+    $result = $qry->result();
+    return $result;
+  }
+  public function getTestimonialData(){
+    $qry = $this->db->get("testimonial");
+    $result = $qry->result();
+    return $result;
+  }
+  public function getPriceTableData(){
+    $this->db->select("*");
+    $this->db->from("price_feature_category");
+    $this->db->join("price_category", "price_feature_category.price_cat = price_category.prive_id");
+    $qry = $this->db->get();
+    $result = $qry->result();
+    return $result;
+  }
 }
 
 ?>

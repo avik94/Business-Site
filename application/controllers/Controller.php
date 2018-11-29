@@ -20,9 +20,23 @@ class Controller extends CI_Controller {
 		$data["headdingGrouping"] = $this->Model->headdingGrouping();
 		$data["whyChooseUsHeaddingImage"] =$this->Model->whyChooseUsHeaddingImage();
 		$data["acrodionText"] =$this->Model->acrodionText();
+		$data["getTeamData"] = $this->Model->getTeamData();
+		$data["getTestimonialData"] = $this->Model->getTestimonialData();
+		$data["getPriceTableData"] = $this->Model->getPriceTableData();
+		// echo "<pre>";
+		// print_r($data["getPriceTableData"]);die();
 
 		$this->load->view('index',$data);
-		// $this->load->view('index',$data1);
 
 	}
+	// public function newsLetter(){
+	// 	$data= $this->input->post("email");
+	// 	$datas["gettingnewsletterData"]=$this->Model->sendingnewsLetterData($data);
+	// 	if ($datas["gettingnewsletterData"] == 1) {
+	// 		$this->session->set_flashdata("sessionVariable","Data already exits!");
+	// 		redirect("/");
+	// 	}else{
+	// 		$this->load->view("newsletter",$datas);
+	// 	}
+	// }
 }
