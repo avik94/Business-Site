@@ -24,8 +24,8 @@ class Controller extends CI_Controller {
 		$data["getTestimonialData"] = $this->Model->getTestimonialData();
 		$data["getpriceData"] = $this->Model->getpriceData();
 		$data["getPriceTableData"] = $this->Model->getPriceTableData();
-		// echo "<pre>";
-		// print_r($data["getPriceTableData"]);die();
+		$data["getBlogData"] = $this->Model->getblogData();
+
 
 		$this->load->view('index',$data);
 

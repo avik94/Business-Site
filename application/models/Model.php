@@ -89,6 +89,11 @@ class Model extends CI_Model
     $result = $qry->result();
     return $result;
   }
+  public function getblogData(){
+    $qry=$this->db->get("bolg",3);
+    $result=$qry->result();
+    return $result;
+  }
 }
 
 ?>
